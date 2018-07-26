@@ -1,0 +1,76 @@
+@import "../../../assets/less/mixins";
+.HomeNewProduct{
+  width: 100%;
+  background: #fff;
+  .NewProductHeader{
+    height: 260/@rem;
+    background: url("./images/newProduct/bg.png");
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    &>span{
+      font-size: 36/@rem;
+    }
+    .look{
+      display: block;
+      &>a{
+        font-size: 28/@rem;
+      }
+      &>img{
+        width: 10/@rem;
+        height: 22/@rem;
+        vertical-align: middle;
+      }
+    }
+
+
+  }
+  .NewProductScroll{
+    width: 100%;
+    height: 480/@rem;
+    .NewProductSwiper1{
+      overflow: hidden;
+      padding: 10/@rem;
+      display: flex;
+      .list{
+        display: flex;
+        .item{
+          flex-shrink: 0;
+          width: 280/@rem;
+          height: 416/@rem;
+          margin: 0 10/@rem;
+          .icon{
+            width: 280/@rem;
+            height: 260/@rem;
+            padding-bottom: 40/@rem;
+            background-color: #f4f4f4;
+            &>img{
+              width: 100%;
+            }
+          }
+          .textContaner{
+            margin: 20/@rem 40/@rem;
+            .title{
+              font-size: 28/@rem;
+              margin: 10/@rem 0;
+            }
+            .content{
+              font-size: 24/@rem;
+              margin: 10/@rem 0;
+            }
+            .price{
+              font-size: 28/@rem;
+              color: red;
+            }
+          }
+
+        }
+      }
+
+    }
+  }
+
+
+}

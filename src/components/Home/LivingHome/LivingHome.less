@@ -1,0 +1,81 @@
+@import "../../../assets/less/mixins";
+.LivingHome{
+  width: 100%;
+  background: #fff;
+  margin-top: 20/@rem;
+  .LivingHomeHeader{
+    width: 100%;
+    height: 120/@rem;
+    line-height: 120/@rem;
+    p{
+      font-size: 28/@rem;
+      text-align: center;
+      color: #333;
+    }
+  }
+  .LivingContent{
+    width: 100%;
+    .list{
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      box-sizing: border-box;
+      padding: 10/@rem;
+      .item{
+        flex-shrink: 0;
+        width: 347/@rem;
+        height: 537/@rem;
+        margin-left: 10/@rem;
+        margin-top: 10/@rem;
+        background: #f4f4f4;
+        position: relative;
+        &>h5{
+          font-size: 32/@rem;
+          text-align: center;
+          line-height: 537/@rem;
+          width: 100%;
+          height: 100%;
+        }
+        .right{
+          display: block;
+          width: 67/@rem;
+          height: 67/@rem;
+          background-image: url("./images/jujia/right.png");
+          background-size: cover;
+          background-repeat: no-repeat;
+          position: absolute;
+          left: 140/@rem;
+          top: 340/@rem;
+        }
+        .img{
+          width: 345/@rem;
+          height: 345/@rem;
+          img{
+            width: 100%;
+          }
+        }
+        .title{
+          width: 345/@rem;
+          height: 68/@rem;
+          line-height: 68/@rem;
+          font-size: 24/@rem;
+          box-sizing: border-box;
+          padding-left: 10/@rem;
+          background: #F1ECE2;
+        }
+        .name-shop{
+          font-size: 28/@rem;
+          line-height: 28/@rem;
+          margin: 20/@rem 10/@rem;
+
+        }
+        .price{
+          font-size: 28/@rem;
+          margin-left: 10/@rem;
+          color: red;
+        }
+
+      }
+    }
+  }
+}

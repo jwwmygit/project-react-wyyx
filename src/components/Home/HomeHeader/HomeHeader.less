@@ -1,0 +1,81 @@
+@import "../../../assets/less/mixins";
+.HomeHeader{
+  width: 100%;
+  background: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  .logo-header{
+    padding: 20/@rem 10/@rem ;
+    height: 88/@rem;
+    display: flex;
+    .yx-img{
+      display: inline-block;
+      background-size: cover;
+      margin-left: 20/@rem;
+      margin-right: 20/@rem;
+      margin-top: 8/@rem;
+      width: 138/@rem;
+      height: 40/@rem;
+      background-image: url("./images/logo.png");
+    }
+    .searchDiv{
+      display: flex;
+      width: 532/@rem;
+      height: 56/@rem;
+      background: #ededed;
+      font-size: 28/@rem;
+      text-align: center;
+      line-height: 56/@rem;
+      border-radius: 10/@rem;
+      justify-content: center;
+      .search{
+        display: inline-block;
+        width: 28/@rem;
+        height: 28/@rem;
+        margin-top: 10/@rem;
+        margin-right: 10/@rem;
+        background-image: url("./images/search.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      .search-text{
+        color: #666;
+      }
+    }
+
+  }
+  .scroll{
+    background-color: #fff;
+    line-height: 60/@rem;
+    .scroll-container{
+      display: flex;
+      overflow: hidden;
+      .list{
+        display: flex;
+        flex-shrink: 0; //文字不换行
+        padding-right:30/@rem;
+        background-color: #fff;
+        .tab{
+          position: relative;
+          margin-left: 36/@rem;
+          &.on{
+            border-bottom: 1px solid firebrick;
+            .txt{
+              color: firebrick;
+            }
+          }
+          .txt{
+            padding: 0 16/@rem;
+            line-height: 60/@rem;
+            font-size: 28/@rem;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+
+}
+

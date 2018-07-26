@@ -1,0 +1,65 @@
+@import "../../../assets/less/mixins";
+@import "../../../assets/less/clearfix";
+.BrandContainer{
+  width: 100%;
+  background: #fff;
+  .server{
+    height: 110/@rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &>a{
+      display: inline-block;
+      .text{font-size: 32/@rem;
+      }
+    }
+    .icon{
+      display: inline-block;
+      margin-left: 10/@rem;
+      img{
+        width: 32/@rem;
+        height: 32/@rem;
+        vertical-align: middle;
+      }
+    }
+  }
+  .brand-shop-list{
+    width: 100%;
+    .list{
+      &:extend(.clear all);
+      width: 100%;
+      margin-top: 10/@rem;
+      .container{
+        float: left;
+        width: 340/@rem;
+        height: 236/@rem;
+        margin:10/@rem 10/@rem ;
+        background: #f4f4f4;
+        position: relative;
+        .content{
+          padding: 20/@rem 30/@rem;
+          width: 335/@rem;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow:hidden;
+          &>h4{
+            font-size: 28/@rem;
+          }
+          &>h5{
+            font-size: 24/@rem;
+            margin-top: 10/@rem;
+          }
+        }
+
+        img{
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          left: 0;
+          top: 6/@rem;
+        }
+      }
+
+    }
+  }
+}
