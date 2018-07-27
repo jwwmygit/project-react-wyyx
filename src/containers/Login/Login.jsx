@@ -3,11 +3,14 @@ import './Login.less'
 import GoodsHeader from '../../components/Goods/GoodsHeader/GoodsHeader'
 import {connect} from 'react-redux'
 import Bsroll from 'better-scroll'
+import {reqCode} from '../../api'
 class Login extends Component {
     componentDidMount() {
     }
   state={
-        phone:""
+        phone:"",
+        i:0,
+        timer:null
   };
     clear=()=>{
         this.refs.phoneValue.value='';
@@ -16,12 +19,39 @@ class Login extends Component {
         this.setState({
             phone:this.refs.phoneValue.value
         })
-        console.log(this.refs.phoneValue.value)
+        // console.log(this.refs.phoneValue.value)
       };
-    textPhone=()=>{
+     textPhone=async()=>{
       this.refs.warn.textContent=this.refs.phoneValue.value ? /^1\d{10}$/.test(this.state.phone) ? "" :"手机号格式错误" :'请输入手机号'
         if(/^1\d{10}$/.test(this.state.phone)){
             //模拟发送请求
+            if(this.state.i===0){
+                this.state.i=20
+                this.state.timer=setInterval(()=>{
+                    this.state.i--;
+                    this.refs.yz.textContent="倒计时"+this.state.i+"s";
+                    if(this.state.i<=0){
+                        clearInterval(this.state.timer)
+                        this.refs.yz.textContent="获取验证码";
+                    }
+                },1000)
+            }
+          const response=await reqCode()
+            // console.log(response)
+            if(response.code===0){
+             /* //{phone: "11111111111", code: "111111"}
+                {phone: "22222222222", code: "222222"}
+                {phone: "33333333333", code: "333333"*/
+              const codes=response.data;
+             //验证手机号是否正确，若正确，验证码发送正确
+             codes.map((msg,index)=>{
+                 if(msg.phone===this.refs.phoneValue.value){
+                     // console.log('手机号正确，验证码发送成功')
+                     console.log(msg.code)
+                 }
+             })
+
+            }
 
         }
     }
