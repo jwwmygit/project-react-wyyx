@@ -2,9 +2,10 @@ import React, {Component} from 'react'
 import {getHomeHeader} from '../../../redux/actions'
 import {connect} from 'react-redux';
 import Bsroll from 'better-scroll'
-import {Switch,Route,Redirect}from 'react-router-dom'
+import {Switch,Route,Redirect,withRouter}from 'react-router-dom'
 import './HomeHeader.less'
  class HomeHeader extends Component {
+
     componentDidMount(){
         this.props.getHomeHeader();
         new Bsroll('.scroll-container',{
@@ -14,6 +15,15 @@ import './HomeHeader.less'
             scrollY:false
         })
     }
+     goPath=(index)=>{
+        // console.log(index);
+
+         this.props.history.replace(`/home/homedetail/${index}`)
+     };
+     top=()=>{
+
+         this.props.history.replace(`/home/homemain`)
+     }
     render() {
         const {headcates}=this.props
         return (
@@ -32,13 +42,15 @@ import './HomeHeader.less'
                 <header className="scroll">
                     <div className="scroll-container">
                         <div className="list">
-                            <div className="tab " >
-                                <span className="txt" >推荐</span>
+                            <div className={`tab ${this.props.location.pathname==='/home/homemain' ? "on" :""}`} onClick={this.top}>
+                                <span className="txt"  >推荐</span>
                             </div>
                             {
                                 headcates.map((msg,index)=>{
                                 return(
-                                <div className="tab " key={index}>
+                                <div className={`tab ${this.props.location.pathname==='/home/homedetail/'+index?'on':''}`} key={index}
+                                onClick={()=>this.goPath(index)}
+                                >
                                 <span className="txt" >{msg.name}</span>
                                 </div>
                                 )
@@ -56,4 +68,4 @@ import './HomeHeader.less'
 export default connect(
     state=>({headcates:state.headcates}),
     {getHomeHeader}
-)(HomeHeader)
+)(withRouter(HomeHeader))

@@ -69,7 +69,7 @@ function newItemList(state=initnewItemList,action) {
 function popularItemList(state=initpopularItemList,action) {
     switch (action.type){
         case RECEIVE_POPULARITEMLIST:
-            console.log(action.data)
+            // console.log(action.data)
             return action.data
         default:
             return state
@@ -79,7 +79,7 @@ function popularItemList(state=initpopularItemList,action) {
 function topicList(state=inittopicList,action) {
     switch (action.type){
         case RECEIVE_TOPICLIST:
-            console.log(action.data)
+            // console.log(action.data)
             return action.data
         default:
             return state
@@ -90,7 +90,7 @@ function topicList(state=inittopicList,action) {
 function cateList(state=initcateList,action) {
     switch (action.type){
         case RECEIVE_CATELIST:
-            console.log(action.data)
+            // console.log(action.data)
             return action.data
         default:
             return state
