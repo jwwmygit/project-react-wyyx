@@ -23,7 +23,7 @@ export const reqCategoryData=()=>ajax('/categoryData');
 //更多精彩
 export const reqFindMore=()=>ajax('/findMore');
 //验证码
-
+export const reqFindMore=()=>ajax('/findMore');
 
 
 
