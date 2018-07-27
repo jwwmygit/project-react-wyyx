@@ -22,6 +22,8 @@ export const reqYxLook=()=>ajax('/yxLook');
 export const reqCategoryData=()=>ajax('/categoryData');
 //更多精彩
 export const reqFindMore=()=>ajax('/findMore');
+//验证码
+
 
 
 

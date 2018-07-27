@@ -9,12 +9,12 @@ export default class Personal extends Component {
                 <PersonalHeader />
                 <div className="personalContent">
                     <div className="wy">
-                        <img src="" alt=""/>
+                        <div className="img"></div>
                     </div>
                     <div className="login">
                         <div className="phone" >
                         <span className="icon"></span>
-                        <span className="txt" >手机号码登录</span>
+                        <span className="txt" onClick={()=>this.props.history.replace('/login')} >手机号码登录</span>
                     </div>
                     <div className="mail">
                         <span className="icon"></span>

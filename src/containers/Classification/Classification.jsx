@@ -1,30 +1,66 @@
 import React, {Component} from 'react'
 import './Classification.less'
+import ClassicationRight from '../../components/Classification/ClassificationRight'
 import {connect} from 'react-redux'
 import Bsroll from 'better-scroll'
-
-export default class Classification extends Component {
+import {getCategoryData} from '../../redux/actions'
+class Classification extends Component {
+    state = {
+        index: 0
+    };
     componentDidMount() {
-        // this.props.xxx()
-
+        this.props.getCategoryData();
+        new Bsroll('.left-wrap')
     }
-
+       goIndex = (index) => {
+          this.setState({
+              index
+          })
+        console.log(this.state.index)
+    };
     render() {
-        // const {column} = this.props
+        const {CategoryData} = this.props
         return (
-            <div className="Classification1Wrap">
-                <div className="Classification1WrapHeader">
-                    <div className="wrap-header">
+            <div>
+                <div className="Classification1Wrap">
+                    <div className="Classification1WrapHeader">
+                        <div className="wrap-header">
                         <span className="search">
-                        <img src="./images/search.png" alt=""/>
+                        <img alt=""/>
                       </span>
-                        <span className="title">搜索商品, 共9723款好物</span>
+                            <span className="title">搜索商品, 共9723款好物</span>
+                        </div>
                     </div>
                 </div>
-             {/*   <ClassicationLeft />
-                <ClassicationRight/>*/}
+                <div className="cate-nav">
+                    <div className="left-wrap">
+                        <ul className="list">
+                            {
+                                CategoryData.map((msg, index) => {
+                                        return (
+                                            <li className={`item ${this.state.index===index ? 'active' : ""}`
+                                            } onClick={()=>{
+                                                this.goIndex(index)}}
+                                                key={index}>
+
+                                               {msg.name}
+                                            </li>
+                                        )
+                                    }
+                                )
+                            }
+
+                        </ul>
+                    </div>
+                </div>
+                <ClassicationRight index={this.state.index} CategoryData={this.props.CategoryData}/>
             </div>
+
         )
     }
 }
-        
+
+export default connect(
+    state => ({CategoryData: state.CategoryData}),
+    {getCategoryData}
+)(Classification)

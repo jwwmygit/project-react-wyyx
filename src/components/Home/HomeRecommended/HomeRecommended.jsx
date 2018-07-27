@@ -24,10 +24,10 @@ import {connect} from 'react-redux'
             <div className="HomeRecommended">
                 <div className="HomeRecommendedHeader">
                     <span>人气推荐</span>
-                    <a className="look">
-                        <a href="#">查看全部</a>
+                    <div className="look">
+                        <span >查看全部</span>
                         <img src={pic1} alt=""/>
-                    </a>
+                    </div>
                 </div>
                 <div className="NewProductScroll">
                     <div className="NewProductSwiper2">

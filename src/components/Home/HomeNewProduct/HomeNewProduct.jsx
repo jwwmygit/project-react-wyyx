@@ -21,10 +21,10 @@ import Bsroll from 'better-scroll'
             <div className="HomeNewProduct">
                 <div className="NewProductHeader">
                     <span>新品首发</span>
-                    <a className="look">
+                    <div className="look">
                         <a href="#">查看全部</a>
                         <img src={pic1} alt=""/>
-                    </a>
+                    </div>
                 </div>
                 <div className="NewProductScroll">
                     <div className="NewProductSwiper1">

@@ -1,38 +1,35 @@
-@rem:750/10rem;
-.initLayer_wrap{
-  width:750/@rem;
-  height:1334/@rem;
-  background-color: #eee;
-  position: absolute;
-  top:0;
-  bottom:0;
-  .initLayer_top{
-    width:750/@rem;
-    margin:0 auto;
-    &>img{
-      width:750/@rem;
+@import "../../assets/less/mixins";
+#InterContainer{
+  width: 100%;
+  height: 100/@rem;
+  background: red;
+  .layer-top{
+    width: 100%;
+    .top1{
+      width: 100%;
+      height: 386/@rem;
+      display: block;
+    }
+    .top2{
+      width: 100%;
+      height: 327/@rem;
+      display: block;
     }
   }
-  .initLayer_bottom{
-    width:750/@rem;
-    margin:0 auto;
+  .layer-bottom{
     position: relative;
-    &>img{
-      width:100%;
+    .bottom-img{
+      width: 100%;
+      display: block;
     }
-    &>.download_btn{
+    .go-main{
+      display: block;
+      width:254/@rem ;
+      height: 30/@rem;
       position: absolute;
-      top:1.28rem;
-      left:2.13rem;
-      width:432/@rem;
-      height:98/@rem;
-    }
-    &>.goMisite_btn{
-      position: absolute;
-      top:3.06rem;
-      left:3.28rem;
-      width:254/@rem;
-      height:30/@rem;
+      left: 244/@rem;
+      top: 235/@rem;
     }
   }
+
 }

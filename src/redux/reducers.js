@@ -11,7 +11,8 @@ import {
         RECEIVE_RECOMMEND,
         RECEIVE_TENFIFTEEN,
         RECEIVE_YXLOOK,
-        RECEIVE_REQFINDMORE
+        RECEIVE_REQFINDMORE,
+        RECEIVE_CATEGORYDATA
 
     }from './action-types'
     //home头部数据
@@ -28,6 +29,7 @@ import {
     const initTenfifteen=[];
     const initYxLook={};
     const initfindMore=[];
+    const initCategoryData=[];
     function headcates(state=initHeadcates,action) {
         switch (action.type){
             case RECEIVE_HEADCATES:
@@ -100,7 +102,7 @@ function cateList(state=initcateList,action) {
 function column(state=initColumn,action) {
     switch (action.type){
         case RECEIVE_COLUMN:
-            console.log(action.data)
+            // console.log(action.data)
             return action.data
         default:
             return state
@@ -120,7 +122,7 @@ function recommend(state=initRecommend,action) {
 function tenfifteen(state=initTenfifteen,action) {
     switch (action.type){
         case RECEIVE_TENFIFTEEN:
-            console.log(action.data)
+            // console.log(action.data)
             return action.data
         default:
             return state
@@ -131,7 +133,7 @@ function tenfifteen(state=initTenfifteen,action) {
 function YxLook(state=initYxLook,action) {
     switch (action.type){
         case RECEIVE_YXLOOK:
-            console.log(action.data)
+            // console.log(action.data)
             return action.data
         default:
             return state
@@ -141,7 +143,18 @@ function YxLook(state=initYxLook,action) {
 function findMore(state=initfindMore,action) {
     switch (action.type){
         case RECEIVE_REQFINDMORE:
-            console.log(action.data)
+            // console.log(action.data)
+            return action.data
+        default:
+            return state
+    }
+}
+
+//分类
+function CategoryData(state=initCategoryData,action) {
+    switch (action.type){
+        case RECEIVE_CATEGORYDATA:
+            // console.log(action.data)
             return action.data
         default:
             return state
@@ -160,7 +173,8 @@ function findMore(state=initfindMore,action) {
         recommend,
         tenfifteen,
         YxLook,
-        findMore
+        findMore,
+        CategoryData
 
 
     })

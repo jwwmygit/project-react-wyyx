@@ -9,7 +9,6 @@ import './HomeSwiper.less'
  class HomeSwiper extends Component {
   componentDidMount(){
       this.props.getFocusList();
-
   }
   componentDidUpdate(){
       if(this.swiper){

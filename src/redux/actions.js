@@ -10,7 +10,8 @@ import {
     RECEIVE_RECOMMEND,
     RECEIVE_TENFIFTEEN,
     RECEIVE_YXLOOK,
-    RECEIVE_REQFINDMORE
+    RECEIVE_REQFINDMORE,
+    RECEIVE_CATEGORYDATA
 
 
 
@@ -27,7 +28,8 @@ import {
     reqRecommend,
     reqTenfifteen,
     reqYxLook,
-    reqFindMore
+    reqFindMore,
+    reqCategoryData
 
     } from '../api'
 
@@ -198,6 +200,22 @@ export const getFindMore = ()=>{
         if(response.code===0){
             const findMore=response.data
             dispatch(receiveFindMore(findMore))
+        }
+    }
+};
+
+
+//分类第三页
+//同步
+const receiveCategoryData = (CategoryData)=>({type:RECEIVE_CATEGORYDATA,data:CategoryData})
+//异步
+export const getCategoryData = ()=>{
+    return async dispatch => {
+        const response=await reqCategoryData()
+        // console.log(response)
+        if(response.code===0){
+            const CategoryData=response.data
+            dispatch(receiveCategoryData(CategoryData))
         }
     }
 };
