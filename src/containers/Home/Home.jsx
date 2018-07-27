@@ -7,6 +7,7 @@ import HomeRecommended from '../../components/Home/HomeRecommended/HomeRecommend
 import HomeTimelimit from '../../components/Home/HomeTimelimit/HomeTimelimit'
 import HomeProjectScroll from '../../components/Home/HomeProjectScroll/HomeProjectScroll'
 import LivingHome from '../../components/Home/LivingHome/LivingHome'
+import HomeFooter from '../../components/Home/HomeFooter/HomeFooter'
 import  './Home.less'
 export default class Home extends Component {
     render() {
@@ -20,6 +21,7 @@ export default class Home extends Component {
                 <HomeTimelimit/>
                 <HomeProjectScroll/>
                 <LivingHome/>
+                <HomeFooter/>
             </div>
         )
     }

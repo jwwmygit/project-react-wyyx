@@ -1,81 +1,56 @@
 import React, {Component} from 'react'
+import {connect}from 'react-redux'
+import {getCateList} from '../../../redux/actions'
 import './LivingHome.less'
-
-export default class LivingHome extends Component {
+ class LivingHome extends Component {
+    componentDidMount(){
+        this.props.getCateList()
+    }
     render() {
+        const {cateList}=this.props
         return (
             <div className="footer-wrap">
-                <div className="LivingHome">
-                    <div className="LivingHomeHeader" >
-                        <p >2222</p>
-                    </div>
-                    <div className="LivingContent">
-                        <ul className="list">
-                            <li className="item">
-                                <div className="img">
-                                    <img src={require('./images/jujia/01.png')} alt=""/>
+                {
+                    cateList.map((msg,index)=>{
+                        return(
+                            <div className="LivingHome" key={index}>
+                                <div className="LivingHomeHeader" >
+                                    <p >{msg.name}</p>
                                 </div>
-                                <div className="title">透气吸汗吗皮肤</div>
-                                <p className="name-shop">自然麻雀四件套</p>
-                                <p className="price">￥599</p>
-                            </li>
-                            <li className="item">
-                                <div className="img">
-                                    <img src={require('./images/jujia/01.png')} alt=""/>
-                                </div>
-                                <div className="title">透气吸汗吗皮肤</div>
-                                <p className="name-shop">自然麻雀四件套</p>
-                                <p className="price">￥599</p>
-                            </li>
-                            <li className="item">
-                                <div className="img">
-                                    <img src={require('./images/jujia/01.png')} alt=""/>
-                                </div>
-                                <div className="title">透气吸汗吗皮肤</div>
-                                <p className="name-shop">自然麻雀四件套</p>
-                                <p className="price">￥599</p>
-                            </li>
-                            <li className="item">
-                                <div className="img">
-                                    <img src={require('./images/jujia/01.png')} alt=""/>
-                                </div>
-                                <div className="title">透气吸汗吗皮肤</div>
-                                <p className="name-shop">自然麻雀四件套</p>
-                                <p className="price">￥599</p>
-                            </li>
-                            <li className="item">
-                                <div className="img">
-                                    <img src={require('./images/jujia/01.png')} alt=""/>
-                                </div>
-                                <div className="title">透气吸汗吗皮肤</div>
-                                <p className="name-shop">自然麻雀四件套</p>
-                                <p className="price">￥599</p>
-                            </li>
-                            <li className="item">
-                                <div className="img">
-                                    <img src={require('./images/jujia/01.png')} alt=""/>
-                                </div>
-                                <div className="title">透气吸汗吗皮肤</div>
-                                <p className="name-shop">自然麻雀四件套</p>
-                                <p className="price">￥599</p>
-                            </li>
-                            <li className="item">
-                                <div className="img">
-                                    <img src={require('./images/jujia/01.png')} alt=""/>
-                                </div>
-                                <div className="title">透气吸汗吗皮肤</div>
-                                <p className="name-shop">自然麻雀四件套</p>
-                                <p className="price">￥599</p>
-                            </li>
-                            <li className="item">
-                                <h5>更多好物</h5>
-                                <span className="right"></span>
-                            </li>
+                                <div className="LivingContent">
+                                    <ul className="list">
+                                        {
+                                            msg.itemList.map((item,i)=>{
+                                                return(
+                                                    <li className="item" key={i}>
+                                                        <div className="img">
+                                                            <img src={item.listPicUrl} alt=""/>
+                                                        </div>
+                                                        <div className="title">{item.simpleDesc}</div>
+                                                        <p className="name-shop">{item.name}</p>
+                                                        <p className="price">￥{item.retailPrice}</p>
+                                                    </li>
+                                                )
+                                            })
+                                        }
 
-                        </ul>
-                    </div>
-                </div>
+                                        <li className="item">
+                                            <h5>更多好物</h5>
+                                            <span className="right"></span>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        )
+                    })
+                }
+
             </div>
         )
     }
 }
+export default connect(
+    state=>({cateList:state.cateList}),
+    {getCateList}
+)(LivingHome)

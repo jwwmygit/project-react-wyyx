@@ -1,7 +1,21 @@
 import React, {Component} from 'react'
+import {getHomeHeader} from '../../../redux/actions'
+import {connect} from 'react-redux';
+import Bsroll from 'better-scroll'
+import {Switch,Route,Redirect}from 'react-router-dom'
 import './HomeHeader.less'
-export default class Cart extends Component {
+ class HomeHeader extends Component {
+    componentDidMount(){
+        this.props.getHomeHeader();
+        new Bsroll('.scroll-container',{
+            probeType: 2,  // 因为惯性滑动不会触发
+            click: true,   //默认是禁止点击的
+            scrollX: true,
+            scrollY:false
+        })
+    }
     render() {
+        const {headcates}=this.props
         return (
             <div className="HomeHeader">
                 <div className="logo-header">
@@ -21,33 +35,16 @@ export default class Cart extends Component {
                             <div className="tab " >
                                 <span className="txt" >推荐</span>
                             </div>
-                            <div className="tab " >
-                                <span className="txt" >推荐</span>
-                            </div>
-                            <div className="tab " >
-                                <span className="txt" >推荐</span>
-                            </div>
-                            <div className="tab " >
-                                <span className="txt" >推荐</span>
-                            </div>
-                            <div className="tab " >
-                                <span className="txt" >推荐</span>
-                            </div>
-                            <div className="tab "  >
-                                <span className="txt" >111</span>
-                            </div>
-                            <div className="tab "  >
-                                <span className="txt" >111</span>
-                            </div>
-                            <div className="tab "  >
-                                <span className="txt" >111</span>
-                            </div>
-                            <div className="tab "  >
-                                <span className="txt" >111</span>
-                            </div>
-                            <div className="tab "  >
-                                <span className="txt" >111</span>
-                            </div>
+                            {
+                                headcates.map((msg,index)=>{
+                                return(
+                                <div className="tab " key={index}>
+                                <span className="txt" >{msg.name}</span>
+                                </div>
+                                )
+                            })
+                            }
+
                         </div>
                     </div>
 
@@ -56,3 +53,7 @@ export default class Cart extends Component {
         )
     }
 }
+export default connect(
+    state=>({headcates:state.headcates}),
+    {getHomeHeader}
+)(HomeHeader)

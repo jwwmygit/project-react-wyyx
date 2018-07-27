@@ -1,0 +1,55 @@
+@import "../../../assets/less/mixins";
+.GoodsLook{
+  margin-top: 10/@rem;
+  /*padding: 0 20/@rem;*/
+  background: #fff;
+  .GoodsLookHeader{
+    height: 120/@rem;
+    text-align: center;
+    line-height: 120/@rem;
+    font-size: 30/@rem;
+
+
+  }
+  .GoodsLookCotent{
+    .content{
+      width: 100%;
+      height: 422/@rem;
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .text{
+      padding: 20/@rem;
+      box-sizing: border-box;
+      .title{
+        display: flex;
+        align-items: center;
+        .icon{
+          margin-right: 15/@rem;
+          width: 48/@rem;
+          height: 48/@rem;
+          display: inline-block;
+          border-radius: 50%;
+          overflow: hidden;
+          img{
+            width: 100%;
+            height: 100%;
+            vertical-align: middle;
+          }
+        }
+        .name{
+          font-size: 32/@rem;
+          line-height: 32/@rem;
+        }
+      }
+      .select{
+        font-size: 28/@rem;
+        color: #7f7f7f;
+
+      }
+
+    }
+  }
+}

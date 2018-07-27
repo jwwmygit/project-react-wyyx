@@ -2,9 +2,21 @@ import React, {Component} from 'react'
 import pic1 from './images/newProduct/right.png'
 import pic2 from './images/newProduct/03.png'
 import './HomeNewProduct.less'
-
-export default class HomeNewProduct extends Component {
+import {getNewItemList} from '../../../redux/actions'
+import {connect} from 'react-redux'
+import Bsroll from 'better-scroll'
+ class HomeNewProduct extends Component {
+    componentDidMount(){
+        this.props.getNewItemList()
+        new Bsroll('.NewProductSwiper1',{
+            probeType: 2,  // 因为惯性滑动不会触发
+            click: true,   //默认是禁止点击的
+            scrollX: true,
+            scrollY:false
+        })
+    }
     render() {
+        const {newItemList}=this.props
         return (
             <div className="HomeNewProduct">
                 <div className="NewProductHeader">
@@ -17,86 +29,23 @@ export default class HomeNewProduct extends Component {
                 <div className="NewProductScroll">
                     <div className="NewProductSwiper1">
                         <ul className="list">
-                            <li className="item">
-                              <div className="icon">
-                                <img src={pic2} alt=""/>
-                              </div>
-                              <div className="textContaner">
-                                <div className="title ellipsis">网易制造3D1111111111111111111111111111</div>
-                                <div className="content ellipsis">创造可逆模式空气</div>
-                                <div className="price ellipsis">￥499</div>
-                              </div>
-                            </li>
-                            <li className="item">
-                                <div className="icon">
-                                    <img src={pic2} alt=""/>
-                                </div>
-                                <div className="textContaner">
-                                    <div className="title ellipsis">网易制造3D1111111111111111111111111111</div>
-                                    <div className="content ellipsis">创造可逆模式空气</div>
-                                    <div className="price ellipsis">￥499</div>
-                                </div>
-                            </li>
-                            <li className="item">
-                                <div className="icon">
-                                    <img src={pic2} alt=""/>
-                                </div>
-                                <div className="textContaner">
-                                    <div className="title ellipsis">网易制造3D1111111111111111111111111111</div>
-                                    <div className="content ellipsis">创造可逆模式空气</div>
-                                    <div className="price ellipsis">￥499</div>
-                                </div>
-                            </li>
-                            <li className="item">
-                                <div className="icon">
-                                    <img src={pic2} alt=""/>
-                                </div>
-                                <div className="textContaner">
-                                    <div className="title ellipsis">网易制造3D1111111111111111111111111111</div>
-                                    <div className="content ellipsis">创造可逆模式空气</div>
-                                    <div className="price ellipsis">￥499</div>
-                                </div>
-                            </li>
-                            <li className="item">
-                                <div className="icon">
-                                    <img src={pic2} alt=""/>
-                                </div>
-                                <div className="textContaner">
-                                    <div className="title ellipsis">网易制造3D1111111111111111111111111111</div>
-                                    <div className="content ellipsis">创造可逆模式空气</div>
-                                    <div className="price ellipsis">￥499</div>
-                                </div>
-                            </li>
-                            <li className="item">
-                                <div className="icon">
-                                    <img src={pic2} alt=""/>
-                                </div>
-                                <div className="textContaner">
-                                    <div className="title ellipsis">网易制造3D1111111111111111111111111111</div>
-                                    <div className="content ellipsis">创造可逆模式空气</div>
-                                    <div className="price ellipsis">￥499</div>
-                                </div>
-                            </li>
-                            <li className="item">
-                                <div className="icon">
-                                    <img src={pic2} alt=""/>
-                                </div>
-                                <div className="textContaner">
-                                    <div className="title ellipsis">网易制造3D1111111111111111111111111111</div>
-                                    <div className="content ellipsis">创造可逆模式空气</div>
-                                    <div className="price ellipsis">￥499</div>
-                                </div>
-                            </li>
-                            <li className="item">
-                                <div className="icon">
-                                    <img src={pic2} alt=""/>
-                                </div>
-                                <div className="textContaner">
-                                    <div className="title ellipsis">网易制造3D1111111111111111111111111111</div>
-                                    <div className="content ellipsis">创造可逆模式空气</div>
-                                    <div className="price ellipsis">￥499</div>
-                                </div>
-                            </li>
+                            {
+                                newItemList.map((msg,index)=>{
+                                    return(
+                                        <li className="item" key={index}>
+                                            <div className="icon">
+                                                <img src={msg.listPicUrl} alt=""/>
+                                            </div>
+                                            <div className="textContaner">
+                                                <div className="title ellipsis">{msg.name}</div>
+                                                <div className="content ellipsis">{msg.simpleDesc}</div>
+                                                <div className="price ellipsis">￥{msg.retailPrice}</div>
+                                            </div>
+                                        </li>
+                                    )
+                                })
+                            }
+
                            
                         </ul>
                     </div>
@@ -105,3 +54,7 @@ export default class HomeNewProduct extends Component {
         )
     }
 }
+ export default connect(
+     state=>({newItemList:state.newItemList}),
+     {getNewItemList}
+ )(HomeNewProduct)

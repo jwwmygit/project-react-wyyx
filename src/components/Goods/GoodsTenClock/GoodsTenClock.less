@@ -1,0 +1,118 @@
+@import "../../../assets/less/mixins";
+.GoodsTenClock{
+  width: 100%;
+  background: #fff;
+  padding:0 20/@rem;
+  .GoodsTenClockHeader{
+    width: 100%;
+    height: 120/@rem;
+    line-height: 120/@rem;
+    font-size: 32/@rem;
+    text-align: center;
+    padding-right: 24/@rem;
+    box-sizing: border-box;
+
+  }
+  .GoodsTenClockContent{
+    width: 100%;
+    display: flex;
+    overflow: hidden;
+    .wrap{
+      display: flex;
+      .list{
+        flex-shrink: 0;
+        width: 580/@rem;
+        height: 411/@rem;
+        padding: 38/@rem 40/@rem;
+        margin-right:30/@rem ;
+        background-image: url("./images/bg.png");
+        background-size: cover;
+        position: relative;
+        .content{
+          width: 500/@rem;
+          height: 300/@rem;
+          position: absolute;
+          box-sizing: border-box;
+          padding: 20/@rem;
+          left: 50%;
+          top:40%;
+          transform: translate(-50%,-50%);
+          .more{
+            width: 100%;
+            height: 100%;
+            padding-left: 50/@rem;
+            box-sizing: border-box;
+            text-align: center;
+            font-size: 30/@rem;
+            line-height: 300/@rem;
+            img{
+              vertical-align: middle;
+              width: 30/@rem;
+              height: 30/@rem;
+            }
+          }
+
+          .topWrap{
+            height: 200/@rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 60/@rem;
+            .topic{
+              font-size: 24/@rem;
+              color: #7f7f7f;
+            }
+            .about{
+              font-size: 32/@rem;
+            }
+            .chat{
+              font-size: 28/@rem;
+              color: #7f7f7f;
+            }
+          }
+          .bottom{
+            display: flex;
+            .icon{
+              display: inline-block;
+              width: 48/@rem;
+              height: 48/@rem;
+              border-radius: 50%;
+              vertical-align: middle;
+              overflow: hidden;
+
+              img{
+                width: 100%;
+                height: 100%;
+
+              }
+            }
+            .txt{
+              font-size: 24/@rem;
+              display: inline-block;
+              margin-left: 60/@rem;
+              margin-top: 14/@rem;
+            }
+            .dot{
+              display: flex;
+              width: 48/@rem;
+              height: 48/@rem;
+              border-radius: 50%;
+              background: #d9d9d9;
+              justify-content: space-around;
+              align-items: center;
+              span{
+                width: 6/@rem;
+                height: 6/@rem;
+                background: #fff;
+                display: inline-block;
+
+              }
+            }
+          }
+        }
+      }
+    }
+
+  }
+}
