@@ -7,16 +7,13 @@ import Bsroll from 'better-scroll'
 class HomeChildrenDetail extends Component {
     componentDidMount() {
          this.props.getCateList()
-
     }
-
     render() {
         const {cateList} = this.props;
         const index=this.props.match.params.id;
-        console.log(index)
+        // console.log(index)
         return (
-
-                 <div className="home_list" v-if="tcateList[index]">
+                 <div className="home_list" >
                     <div className="banner">
                         <img src={cateList[index] ? cateList[index].bannerUrl : null} alt=""/>
                     </div>

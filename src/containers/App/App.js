@@ -27,7 +27,7 @@ export default class App extends Component{
                  <Route path='/login' component={Login}></Route>
                  <Route path='/' component={InitLayer}></Route>
                 </Switch>
-                {isShow!=='/initLayer'&&isShow!=='/personal'&&isShow!=='/login'&&<Footer/>}
+                {isShow!=='/initLayer'&&isShow!=='/personal'&&isShow!=='/login'&&isShow!=='/'&&<Footer/>}
             </div>
 
         )

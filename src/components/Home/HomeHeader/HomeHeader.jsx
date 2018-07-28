@@ -2,10 +2,12 @@ import React, {Component} from 'react'
 import {getHomeHeader} from '../../../redux/actions'
 import {connect} from 'react-redux';
 import Bsroll from 'better-scroll'
-import {Switch,Route,Redirect,withRouter}from 'react-router-dom'
+import {Switch,Route,Redirect,withRouter,NavLink}from 'react-router-dom'
 import './HomeHeader.less'
  class HomeHeader extends Component {
-
+    state={
+        index:-1,
+    };
     componentDidMount(){
         this.props.getHomeHeader();
         new Bsroll('.scroll-container',{
@@ -17,12 +19,16 @@ import './HomeHeader.less'
     }
      goPath=(index)=>{
         // console.log(index);
-
-         this.props.history.replace(`/home/homedetail/${index}`)
+        this.setState({
+            index,
+        });
+        console.log(this.state.index)
      };
      top=()=>{
-
-         this.props.history.replace(`/home/homemain`)
+         this.setState({
+             index:-1,
+         });
+         // this.props.history.replace(`/home/homemain`)
      }
     render() {
         const {headcates}=this.props
@@ -42,16 +48,22 @@ import './HomeHeader.less'
                 <header className="scroll">
                     <div className="scroll-container">
                         <div className="list">
-                            <div className={`tab ${this.props.location.pathname==='/home/homemain' ? "on" :""}`} onClick={this.top}>
-                                <span className="txt"  >推荐</span>
+                            <div className={`tab ${this.props.history.location.pathname==='/home/homemain' ? "on" :""}`} onClick={this.top}>
+                                <NavLink to={'/home/homemain'}>
+                                    <span className="txt"  >推荐</span>
+                                </NavLink>
+
                             </div>
                             {
                                 headcates.map((msg,index)=>{
                                 return(
-                                <div className={`tab ${this.props.location.pathname==='/home/homedetail/'+index?'on':''}`} key={index}
+                                <div className={`tab ${this.props.history.location.pathname==='/home/homedetail/'+index?'on':''}`} key={index}
                                 onClick={()=>this.goPath(index)}
                                 >
-                                <span className="txt" >{msg.name}</span>
+                                    <NavLink to={`/home/homedetail/${index}`}>
+                                        <span className="txt" >{msg.name}</span>
+                                    </NavLink>
+
                                 </div>
                                 )
                             })
